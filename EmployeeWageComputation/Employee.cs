@@ -8,6 +8,7 @@
             Console.WriteLine("Welcome to EmployeeWage Computation");
             //UC1
             int FullTime = 1;
+            int PartTime =2;
             int EmpHrs;
             int Rate_Per_Hour = 20;
             Random random = new Random();
@@ -16,6 +17,11 @@
             {
                 Console.WriteLine("empolyee is FullTime");
                 EmpHrs = 8;
+            }
+            else if(empCheck == PartTime)
+            {
+                Console.WriteLine("Employee is Partime");
+                EmpHrs = 4;
             }
             else
             {
