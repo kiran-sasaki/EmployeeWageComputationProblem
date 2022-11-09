@@ -10,25 +10,35 @@
             const int FullTime = 1;
             //UC2
             const int PartTime =2;
-            int Rate_Per_Hour = 20;
+            const int Rate_Per_Hour = 20;
+            const int Working_Day_Per_Month = 20;
             int EmpHrs;
-            Random random = new Random();
-            int empCheck = random.Next(0, 3);
-            //UC3
-            switch (empCheck)
+            int EmpWage;
+            int TotalEmpWage = 0;
+            for (int i = 0; i < Working_Day_Per_Month; i++)
             {
-                case FullTime:
-                    EmpHrs = 8;
-                    break;
-                case PartTime:
-                    EmpHrs = 4;
-                    break;
-                default:
-                    EmpHrs = 0;
-                    break;
+                //UC3
+                Random random = new Random();
+                int Empcheck = random.Next(0, 3);
+                switch (Empcheck)
+                {
+                    case FullTime:
+                        EmpHrs = 8;
+                        break;
+                    case PartTime:
+                        EmpHrs = 4;
+                        break;
+                    default:
+                        EmpHrs = 0;
+                        break;
+                }
+
+
+                EmpWage = EmpHrs * Rate_Per_Hour;
+                Console.WriteLine("Employee Wage is " + EmpWage);
+                TotalEmpWage += EmpWage;
             }
-            int TotalEmpWage = EmpHrs * Rate_Per_Hour;
-            Console.WriteLine("Employee Wage is "+TotalEmpWage);
+            Console.WriteLine("Total Employee Wage is "+TotalEmpWage);
             Console.ReadKey();
         }
     }
