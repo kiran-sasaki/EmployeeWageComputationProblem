@@ -7,26 +7,25 @@
             //Main
             Console.WriteLine("Welcome to EmployeeWage Computation");
             //UC1
-            int FullTime = 1;
-            int PartTime =2;
-            int EmpHrs;
+            const int FullTime = 1;
+            //UC2
+            const int PartTime =2;
             int Rate_Per_Hour = 20;
+            int EmpHrs;
             Random random = new Random();
             int empCheck = random.Next(0, 3);
-            if (empCheck == FullTime)
+            //UC3
+            switch (empCheck)
             {
-                Console.WriteLine("empolyee is FullTime");
-                EmpHrs = 8;
-            }
-            else if(empCheck == PartTime)
-            {
-                Console.WriteLine("Employee is Partime");
-                EmpHrs = 4;
-            }
-            else
-            {
-                Console.WriteLine("Employee is Absent");
-                EmpHrs = 0;
+                case FullTime:
+                    EmpHrs = 8;
+                    break;
+                case PartTime:
+                    EmpHrs = 4;
+                    break;
+                default:
+                    EmpHrs = 0;
+                    break;
             }
             int TotalEmpWage = EmpHrs * Rate_Per_Hour;
             Console.WriteLine("Employee Wage is "+TotalEmpWage);
