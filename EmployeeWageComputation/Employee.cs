@@ -11,10 +11,8 @@
             //UC2
             const int PartTime =2;
             const int Rate_Per_Hour = 20;
-            const int Working_Day_Per_Month = 20;
             int EmpHrs;
             int EmpWage;
-            int TotalEmpWage = 0;
             for (int i = 0; i < Working_Day_Per_Month; i++)
             {
                 //UC3
@@ -32,14 +30,10 @@
                         EmpHrs = 0;
                         break;
                 }
-
-
-                EmpWage = EmpHrs * Rate_Per_Hour;
+            }
+             EmpWage = EmpHrs * Rate_Per_Hour;
                 Console.WriteLine("Employee Wage is " + EmpWage);
                 TotalEmpWage += EmpWage;
-            }
-            Console.WriteLine("Total Employee Wage is "+TotalEmpWage);
-            Console.ReadKey();
         }
     }
 }
