@@ -6,11 +6,10 @@
         {
             //Main
             //Console.WriteLine("Welcome to EmployeeWage Computation");
-            EmpWageForMultipleCompany ferrari = new EmpWageForMultipleCompany("ferrari", 20, 2, 10);
-            EmpWageForMultipleCompany lamborighini = new EmpWageForMultipleCompany("Lamborghini", 30, 5, 20);
-            ferrari.calculateEmployeeWage();
-            lamborighini.calculateEmployeeWage();
-            Console.WriteLine(ferrari.ToString()); ;
+            EmpWageForMultipleCompany empWageBuilder = new EmpWageForMultipleCompany();
+            empWageBuilder.addCompanyEmpWage("Mercedes", 20, 2, 10);
+            empWageBuilder.addCompanyEmpWage("Hass", 10, 4, 20);
+            empWageBuilder.computeWage();
         }
     }
 }
