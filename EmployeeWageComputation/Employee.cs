@@ -6,11 +6,11 @@
         {
             //Main
             //Console.WriteLine("Welcome to EmployeeWage Computation");
-            //Calling Class By ClassName And MethodName 
-            //EmployeeWage.CalculateWage();
-            EmpWageForMultipleCompany.MultipleCompanyEmpWage("Ferrari", 10, 100, 20);
-            EmpWageForMultipleCompany.MultipleCompanyEmpWage("Mclaren", 20, 100, 30);
-            Console.ReadKey();
+            EmpWageForMultipleCompany ferrari = new EmpWageForMultipleCompany("ferrari", 20, 2, 10);
+            EmpWageForMultipleCompany lamborighini = new EmpWageForMultipleCompany("Lamborghini", 30, 5, 20);
+            ferrari.calculateEmployeeWage();
+            lamborighini.calculateEmployeeWage();
+            Console.WriteLine(ferrari.ToString()); ;
         }
     }
 }

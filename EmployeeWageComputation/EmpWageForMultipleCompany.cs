@@ -6,18 +6,30 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public static class EmpWageForMultipleCompany
+    public class EmpWageForMultipleCompany
     {
         public const int fullTime = 2;
         public const int partTime = 1;
-        //Parameterized Method
-        public static int MultipleCompanyEmpWage(string company, int Rate_Per_Hour, int MAX_Working_Hrs_Per_Month, int MAX_Working_Day_Per_Month)
+        private string company;
+        private int ratePerHrs;
+        private int numberOfWorkingDays;
+        private int totalWorkingHrs;
+        private int totalEmpWage;
+        //Paramterized Constructor
+        public EmpWageForMultipleCompany(string company, int ratePerHrs, int numberOfWorkingDay, int totalWorkingHrs)
+        {
+            this.company = company;
+            this.ratePerHrs = ratePerHrs;
+            this.numberOfWorkingDays = numberOfWorkingDay;
+            this.totalWorkingHrs = totalWorkingHrs;
+        }
+        public void MultipleCompanyEmpWage()
         {
             //Variable Declaration
             int empHrs = 0;
             int totalEmpHrs = 0;
             int totalWorkingDays = 0;
-            while (totalEmpHrs <= MAX_Working_Hrs_Per_Month && totalWorkingDays <= MAX_Working_Day_Per_Month)
+            while (totalEmpHrs != this.totalWorkingHrs && totalWorkingDays != this.numberOfWorkingDays)
             {
                 totalWorkingDays++;
                 //Random Intialization
@@ -40,9 +52,12 @@ namespace EmployeeWageComputation
                 Console.WriteLine("Days " + totalWorkingDays + "EmpHrs: " + totalEmpHrs);
             }
             //Formula For Getting Total Employee Wage
-            int totalEmpWage = totalEmpHrs * Rate_Per_Hour;
+            int totalEmpWage = totalEmpHrs * ratePerHrs;
             Console.WriteLine("Total Emp Wage for company: " + company + " is " + totalEmpWage);
-            return totalEmpWage;
+        }
+        public string toString()
+        {
+            return "Total Emp Wage for campny: " + this.company + " is " + this.totalEmpWage;
         }
     }
 }
