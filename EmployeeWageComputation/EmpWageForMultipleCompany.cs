@@ -12,14 +12,21 @@ namespace EmployeeWageComputation
         public const int partTime = 1;
         private int numOfCompany = 0;
         private CompanyEmpWage[] companyEmpWageArray;
+        List<CompanyEmpWage> companyEmpWageList = new List<CompanyEmpWage>();
         public EmpWageForMultipleCompany()
         {
             this.companyEmpWageArray = new CompanyEmpWage[5];
         }
         public void addCompanyEmpWage(string company, int ratePerHrs, int numberOfWorkingDay, int totalWorkingHrs)
         {
+            CompanyEmpWage companyEmpWage = new CompanyEmpWage(company, ratePerHrs, numberOfWorkingDay, totalWorkingHrs);
             companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, ratePerHrs, numberOfWorkingDay, totalWorkingHrs);
             numOfCompany++;
+            companyEmpWageList.Add(companyEmpWage);
+            foreach(CompanyEmpWage companyEmp in companyEmpWageList)
+            {
+                Console.WriteLine(companyEmp.company);
+            }
         }
         public void computeWage()
         {
@@ -54,7 +61,7 @@ namespace EmployeeWageComputation
                 }
                 //Formula For Daily Employee Wage
                 totalEmpHrs += workingHours;
-                Console.WriteLine("day " + totalWorkingDay + " wage is " + workingHours);
+                Console.WriteLine("day " + totalWorkingDay + " Hrs is " + workingHours);
             }
             return totalEmpHrs * companyEmpWage.ratePerHrs;
         }
