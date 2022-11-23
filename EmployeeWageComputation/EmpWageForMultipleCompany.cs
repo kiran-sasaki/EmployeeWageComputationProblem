@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public class EmpWageForMultipleCompany
+    public class EmpWageForMultipleCompany : IComputeWage
     {
         public const int fullTime = 2;
         public const int partTime = 1;
@@ -29,7 +29,7 @@ namespace EmployeeWageComputation
                 Console.WriteLine(this.companyEmpWageArray[i].toString());
             }
         }
-        private int calculateEmployeeWage(CompanyEmpWage companyEmpWage)
+        public int calculateEmployeeWage(CompanyEmpWage companyEmpWage)
         {
             //variable
             int totalEmpHrs = 0;
