@@ -6,58 +6,58 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public class EmpWageForMultipleCompany
+    public class EmpWageForMultipleCompany : IComputeWage
     {
         public const int fullTime = 2;
         public const int partTime = 1;
-        private string company;
-        private int ratePerHrs;
-        private int numberOfWorkingDays;
-        private int totalWorkingHrs;
-        private int totalEmpWage;
-        //Paramterized Constructor
-        public EmpWageForMultipleCompany(string company, int ratePerHrs, int numberOfWorkingDay, int totalWorkingHrs)
+        private int numOfCompany = 0;
+        private CompanyEmpWage[] companyEmpWageArray;
+        public EmpWageForMultipleCompany()
         {
-            this.company = company;
-            this.ratePerHrs = ratePerHrs;
-            this.numberOfWorkingDays = numberOfWorkingDay;
-            this.totalWorkingHrs = totalWorkingHrs;
+            this.companyEmpWageArray = new CompanyEmpWage[5];
         }
-        public void MultipleCompanyEmpWage()
+        public void addCompanyEmpWage(string company, int ratePerHrs, int numberOfWorkingDay, int totalWorkingHrs)
         {
-            //Variable Declaration
-            int empHrs = 0;
-            int totalEmpHrs = 0;
-            int totalWorkingDays = 0;
-            while (totalEmpHrs != this.totalWorkingHrs && totalWorkingDays != this.numberOfWorkingDays)
+            companyEmpWageArray[this.numOfCompany] = new CompanyEmpWage(company, ratePerHrs, numberOfWorkingDay, totalWorkingHrs);
+            numOfCompany++;
+        }
+        public void computeWage()
+        {
+            for (int i = 0; i < numOfCompany; i++)
             {
-                totalWorkingDays++;
-                //Random Intialization
-                Random random = new Random();
-                int empcheck = random.Next(0, 3);
-                switch (empcheck)
+                companyEmpWageArray[i].setTotalEmpWage(this.calculateEmployeeWage(this.companyEmpWageArray[i]));
+                Console.WriteLine(this.companyEmpWageArray[i].toString());
+            }
+        }
+        public int calculateEmployeeWage(CompanyEmpWage companyEmpWage)
+        {
+            //variable
+            int totalEmpHrs = 0;
+            int totalWorkingDay = 0;
+            int workingHours;
+            while (totalEmpHrs != companyEmpWage.totalWorkingHrs && totalWorkingDay != companyEmpWage.numberOfWorkingDay)
+            {
+                totalWorkingDay++;
+                Random obj = new Random();
+                int empCheck = obj.Next(3);
+                switch (empCheck)
                 {
                     case fullTime:
-                        empHrs = 8;
+                        workingHours = 8;
                         break;
                     case partTime:
-                        empHrs = 4;
+                        workingHours = 4;
                         break;
                     default:
-                        empHrs = 0;
+                        workingHours = 0;
                         break;
                 }
-                //Formula For Getting daily Employee Wage
-                totalEmpHrs += empHrs;
-                Console.WriteLine("Days " + totalWorkingDays + "EmpHrs: " + totalEmpHrs);
+                //Formula For Daily Employee Wage
+                totalEmpHrs += workingHours;
+                Console.WriteLine("day " + totalWorkingDay + " wage is " + workingHours);
             }
-            //Formula For Getting Total Employee Wage
-            int totalEmpWage = totalEmpHrs * ratePerHrs;
-            Console.WriteLine("Total Emp Wage for company: " + company + " is " + totalEmpWage);
+            return totalEmpHrs * companyEmpWage.ratePerHrs;
         }
-        public string toString()
-        {
-            return "Total Emp Wage for campny: " + this.company + " is " + this.totalEmpWage;
-        }
+
     }
 }
