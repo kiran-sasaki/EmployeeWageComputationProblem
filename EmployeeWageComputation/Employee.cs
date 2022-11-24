@@ -10,6 +10,7 @@
             empWageBuilder.addCompanyEmpWage("Mercedes", 20, 2, 10);
             empWageBuilder.addCompanyEmpWage("Hass", 10, 4, 20);
             empWageBuilder.computeWage();
+            Console.WriteLine("Total wage of Mercedes company : "+empWageBuilder.GetTotalWage("Mercedes"));
         }
     }
 }
