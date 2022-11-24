@@ -42,6 +42,7 @@ namespace EmployeeWageComputation
             int totalEmpHrs = 0;
             int totalWorkingDay = 0;
             int workingHours;
+            int empwage;
             while (totalEmpHrs != companyEmpWage.totalWorkingHrs && totalWorkingDay != companyEmpWage.numberOfWorkingDay)
             {
                 totalWorkingDay++;
@@ -59,7 +60,10 @@ namespace EmployeeWageComputation
                         workingHours = 0;
                         break;
                 }
+                //UC13
                 //Formula For Daily Employee Wage
+                empwage = workingHours * companyEmpWage.ratePerHrs;
+                Console.WriteLine("empwage "+empwage+"Working hours "+workingHours);
                 totalEmpHrs += workingHours;
                 Console.WriteLine("day " + totalWorkingDay + " Hrs is " + workingHours);
             }
